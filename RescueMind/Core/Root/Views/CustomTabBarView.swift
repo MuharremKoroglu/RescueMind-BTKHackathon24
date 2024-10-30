@@ -30,9 +30,7 @@ struct CustomTabBarView: View {
                         VStack(alignment: .center, spacing: 5) {
                             
                             Image(systemName: tabItem.tabIcon)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: tabItem.tabTagNumber == 1 ? 32 : 24, height: tabItem.tabTagNumber == 1 ? 32 : 24)
+                                .font(.system(size: tabItem.tabTagNumber == 1 ? 32 : 24))
                                 .foregroundStyle(tabItem.tabTagNumber == 1 ? .accent : .gray)
                             
                             Text(tabItem.tabTitle)
