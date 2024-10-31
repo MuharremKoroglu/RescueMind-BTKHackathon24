@@ -11,6 +11,7 @@ import GoogleGenerativeAI
 struct RootView: View {
     
     @StateObject private var homeViewViewModel : HomeViewViewModel
+    @StateObject private var scenariosViewViewModel : ScenariosViewViewModel
     
     @State private var selectedTab : Int = 0
         
@@ -27,6 +28,10 @@ struct RootView: View {
             wrappedValue: HomeViewViewModel(chat: chat)
         )
         
+        _scenariosViewViewModel = StateObject(
+            wrappedValue: ScenariosViewViewModel(chat: chat)
+        )
+        
         UITabBar.appearance().isHidden = true
     }
     
@@ -37,6 +42,7 @@ struct RootView: View {
                     .environmentObject(homeViewViewModel)
                     .tag(0)
                 ScenarioView()
+                    .environmentObject(scenariosViewViewModel)
                     .tag(1)
                 SettingsView()
                     .tag(2)

@@ -39,8 +39,7 @@ struct CourseTestView: View {
                                 .padding()
                                 .background(.accent)
                                 .clipShape(RoundedRectangle(cornerRadius: 5))
-                        }
-                        
+                        }.disabled(viewModel.isButtonDisabled)
                     }
                 }
                 
@@ -57,6 +56,14 @@ struct CourseTestView: View {
                                 .foregroundStyle(.accent)
                         }
                     }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        AnimatedGeminiStarLogo(
+                            isImageRotating: viewModel.isLoading,
+                            imageWidth: size.width * 0.065,
+                            imageHeight: size.width * 0.065
+                        )
+                    }
                 }
                 .onReceive(viewModel.$anErrorOccured) { errorOccured in
                     if errorOccured {
@@ -64,7 +71,7 @@ struct CourseTestView: View {
                     }
                 }
                 .onAppear{
-                    viewModel.getMessageFromGenerativeAI(
+                    viewModel.generateQuestionWithGenerativeAI(
                         prompt: Constants.courseTestPrompt(
                             courseName: course.courseTitle
                         )

@@ -115,24 +115,17 @@ struct HomeView: View {
                         ScrollView(.vertical,showsIndicators: false) {
                             LazyVGrid(columns: columns,spacing: 10) {
                                 ForEach(selectedCourseCategory.categoryCourses) { course in
-                                    ZStack(alignment: .bottomLeading) {
-                                        Image(course.courseImage)
-                                            .resizable()
-                                        GradientLayer()
-                                        Text(course.courseTitle)
-                                            .frame(width: size.width * 0.27,alignment: .leading)
-                                            .font(.avenir(size: size.width * 0.043))
-                                            .foregroundStyle(.white)
-                                            .fontWeight(.medium)
-                                            .lineLimit(2)
-                                            .padding(.horizontal,7)
-                                            .padding(.vertical,7)
-                                    }.frame(height: size.width * 0.55)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .onTapGesture {
-                                            selectedCourse = course
-                                            showCourseDetailView.toggle()
-                                        }
+                                    CourseAndScenarioView(
+                                        height: size.width * 0.55,
+                                        imageName: course.courseImage,
+                                        title: course.courseTitle,
+                                        fontSize: size.width * 0.043,
+                                        fontWidth: size.width * 0.27
+                                    )
+                                    .onTapGesture {
+                                        selectedCourse = course
+                                        showCourseDetailView.toggle()
+                                    }
                                 }
                             }
                         }

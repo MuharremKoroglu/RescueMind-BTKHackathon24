@@ -20,13 +20,18 @@ class HomeViewViewModel : ObservableObject {
         return Double(completedCourses.count) / Double(20)
     }
     
+    var isButtonDisabled : Bool {
+        let aiResponseCount = messages.filter({$0.messageSender == .generativeAI}).count
+        return aiResponseCount == 0 || aiResponseCount == 6
+    }
+    
     private let chat : Chat
     
     init(chat : Chat) {
         self.chat = chat
     }
     
-    func getMessageFromGenerativeAI(prompt : String) {
+    func generateQuestionWithGenerativeAI(prompt : String) {
         
         isLoading = true
             
@@ -64,7 +69,7 @@ class HomeViewViewModel : ObservableObject {
         
         messages.append(message)
         
-        self.getMessageFromGenerativeAI(prompt: messageContent)
+        self.generateQuestionWithGenerativeAI(prompt: messageContent)
         
     }
     
