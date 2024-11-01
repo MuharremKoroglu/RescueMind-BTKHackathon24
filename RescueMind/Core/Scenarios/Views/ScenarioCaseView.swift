@@ -1,19 +1,19 @@
 //
-//  CourseTestView.swift
+//  ScenarioCaseView.swift
 //  RescueMind
 //
-//  Created by Muharrem Köroğlu on 28.10.2024.
+//  Created by Muharrem Köroğlu on 1.11.2024.
 //
 
 import SwiftUI
 
-struct CourseTestView: View {
+struct ScenarioCaseView: View {
     
-    @EnvironmentObject private var viewModel : HomeViewViewModel
+    @EnvironmentObject private var viewModel : ScenariosViewViewModel
     
     @Environment(\.dismiss) private var dismiss
-    
-    let course : EducationalMaterialModel
+        
+    let scenario : EducationalMaterialModel
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,25 +27,25 @@ struct CourseTestView: View {
                 )
                 
                 HStack {
-                    ForEach(Constants.testResponseButtonTitles, id: \.self) { buttonTitle in
-                        Button {
-                            viewModel.prompt = buttonTitle
-                            viewModel.sendMessageToGenerativeAI()
-                        } label: {
-                            Text(buttonTitle)
-                                .frame(maxWidth: .infinity)
-                                .font(.avenir(size: size.width * 0.04))
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .padding()
-                                .background(.accent)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                        }.disabled(viewModel.isButtonDisabled)
-                    }
+                    TextField("Enter your answer...", text: $viewModel.userAnswer, axis: .vertical)
+                        .lineLimit(3)
+                        .font(.avenir(size: size.width * 0.045))
+                        .padding()
+                        .background(.lighterAccent.opacity(0.3),in: Capsule())
+                        .autocorrectionDisabled()
+                    Button {
+                        viewModel.prompt = viewModel.userAnswer
+                        viewModel.sendMessageToGenerativeAI()
+                        viewModel.userAnswer = ""
+                    } label: {
+                        Image(systemName: "paperplane.circle.fill")
+                            .font(.largeTitle)
+                    }.disabled(viewModel.isButtonDisabled)
+                    
                 }
                 
             }.padding([.leading,.trailing,.bottom],10)
-                .navigationTitle("\(course.title) Test")
+                .navigationTitle("\(scenario.title) Scenario")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
                 .toolbar {
@@ -72,12 +72,13 @@ struct CourseTestView: View {
                     Text(Constants.alertMessage)
                 })
                 .onAppear{
-                    viewModel.prompt = Constants.courseTestPrompt(courseName: course.title)
+                    viewModel.prompt = Constants.scenarioCasePrompt(scenarioName: scenario.title)
                     viewModel.getMessageFromGenerativeAI()
                 }
                 .onDisappear {
                     viewModel.cleanMessages()
                 }
+            
         }
     }
 }

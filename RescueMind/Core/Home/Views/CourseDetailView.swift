@@ -11,26 +11,20 @@ struct CourseDetailView: View {
     
     @EnvironmentObject private var viewModel : HomeViewViewModel
     
-    @State private var showFullDescription: Bool = false
-    
-    @State private var courseCompleted : Bool = false
-    
     @Environment(\.dismiss) private var dismiss
     
-    @Binding var course : CourseModel?
+    @Binding var course : EducationalMaterialModel?
     
-    @Binding var showTestView : Bool
-
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size
             
             VStack {
                 
-                if let course = course {
-
+                if let course = course  {
+                    
                     VStack {
-                        Image(course.courseImage)
+                        Image(course.image)
                             .resizable()
                             .frame(height: size.width * 0.8)
                             .mask {
@@ -41,7 +35,7 @@ struct CourseDetailView: View {
                                 )
                             }
                         
-                        Text(course.courseTitle)
+                        Text(course.title)
                             .frame(maxWidth: .infinity,alignment: .center)
                             .font(.avenir(size: size.width * 0.07))
                             .fontWeight(.semibold)
@@ -52,15 +46,15 @@ struct CourseDetailView: View {
                         VStack(spacing: 20) {
                             
                             VStack(alignment: .leading) {
-                                Text(course.courseDescription)
+                                Text(course.description)
                                     .font(.avenir(size: size.width * 0.04))
-                                    .lineLimit(showFullDescription ? nil : 4)
+                                    .lineLimit(viewModel.showFullDescription ? nil : 4)
                                 Button {
                                     withAnimation(.spring) {
-                                        showFullDescription.toggle()
+                                        viewModel.showFullDescription.toggle()
                                     }
                                 } label: {
-                                    Text(showFullDescription ? "Less" : "Read More")
+                                    Text(viewModel.showFullDescription ? "Less" : "Read More")
                                 }
                             }
                             
@@ -74,7 +68,7 @@ struct CourseDetailView: View {
                                 
                                 Divider()
                                 
-                                ForEach(course.courseKeyPoints, id: \.self) { keyPoint in
+                                ForEach(course.keyPoints, id: \.self) { keyPoint in
                                     HStack {
                                         Circle()
                                             .frame(width: size.width * 0.015, height: size.width * 0.015)
@@ -93,8 +87,8 @@ struct CourseDetailView: View {
                                 
                                 Divider()
                                 
-                                ForEach(course.courseCriticalSteps.indices, id: \.self) { stepIndex in
-                                    let criticalStep = course.courseCriticalSteps[stepIndex]
+                                ForEach(course.criticalSteps.indices, id: \.self) { stepIndex in
+                                    let criticalStep = course.criticalSteps[stepIndex]
                                     HStack {
                                         Image(systemName: "\(stepIndex + 1).circle")
                                             .imageScale(.small)
@@ -107,15 +101,15 @@ struct CourseDetailView: View {
                             VStack {
                                 Divider()
                                 
-                                Toggle(isOn: $courseCompleted) {
+                                Toggle(isOn: $viewModel.courseCompleted) {
                                     Text("Course Completed ?")
                                         .font(.avenir(size: size.width * 0.045))
                                 }.tint(.accent)
                                     .onAppear {
-                                        courseCompleted = viewModel.completedCourses.contains(course)
+                                        viewModel.courseCompleted = viewModel.completedCourses.contains(course)
                                     }
-                                    .onChange(of: courseCompleted) {
-                                        if courseCompleted {
+                                    .onChange(of: viewModel.courseCompleted) {
+                                        if viewModel.courseCompleted {
                                             viewModel.completedCourses.insert(course)
                                         } else {
                                             viewModel.completedCourses.remove(course)
@@ -128,7 +122,7 @@ struct CourseDetailView: View {
                                 Button {
                                     dismiss()
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        showTestView.toggle()
+                                        viewModel.showCourseTestView.toggle()
                                     }
                                 } label: {
                                     Text("Start the Test")

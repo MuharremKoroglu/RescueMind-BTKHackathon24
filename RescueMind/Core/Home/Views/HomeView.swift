@@ -11,14 +11,6 @@ struct HomeView: View {
     
     @EnvironmentObject private var viewModel : HomeViewViewModel
     
-    @State private var selectedCourseCategory : CourseCategoryTypes = .accidents
-    
-    @State private var selectedCourse : CourseModel? = nil
-    
-    @State private var showCourseDetailView : Bool = false
-    
-    @State private var showCourseTestView : Bool = false
-        
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -95,9 +87,9 @@ struct HomeView: View {
                         
                         ScrollView(.horizontal,showsIndicators: false) {
                             HStack {
-                                ForEach(CourseCategoryTypes.allCases) { courseCategory in
+                                ForEach(EducationalMaterialCategoryTypes.allCases) { courseCategory in
                                     Button {
-                                        selectedCourseCategory = courseCategory
+                                        viewModel.selectedCourseCategory = courseCategory
                                     } label: {
                                         Text(courseCategory.categoryTitle)
                                             .font(.avenir(size: size.width * 0.037))
@@ -106,7 +98,7 @@ struct HomeView: View {
                                         .padding(10)
                                         .background(
                                             Capsule()
-                                                .fill(selectedCourseCategory == courseCategory ? .lighterAccent.opacity(0.3) : .gray.opacity(0.3))
+                                                .fill(viewModel.selectedCourseCategory == courseCategory ? .lighterAccent.opacity(0.3) : .gray.opacity(0.3))
                                         )
                                 }
                             }
@@ -114,34 +106,32 @@ struct HomeView: View {
                         
                         ScrollView(.vertical,showsIndicators: false) {
                             LazyVGrid(columns: columns,spacing: 10) {
-                                ForEach(selectedCourseCategory.categoryCourses) { course in
+                                ForEach(viewModel.selectedCourseCategory.categoryCourses) { course in
                                     CourseAndScenarioView(
                                         height: size.width * 0.55,
-                                        imageName: course.courseImage,
-                                        title: course.courseTitle,
+                                        imageName: course.image,
+                                        title: course.title,
                                         fontSize: size.width * 0.043,
                                         fontWidth: size.width * 0.27
                                     )
                                     .onTapGesture {
-                                        selectedCourse = course
-                                        showCourseDetailView.toggle()
+                                        viewModel.selectedCourse = course
+                                        viewModel.showCourseDetailView.toggle()
                                     }
                                 }
                             }
                         }
                         
-                    }.sheet(isPresented: $showCourseDetailView, content: {
-                        CourseDetailView(
-                            course: $selectedCourse,
-                            showTestView: $showCourseTestView
-                        )
-                    })
-                    .navigationDestination(isPresented: $showCourseTestView) {
-                        if let course = selectedCourse {
+                    }
+                    .sheet(isPresented: $viewModel.showCourseDetailView) {
+                        CourseDetailView(course: $viewModel.selectedCourse)
+                    }
+                    .navigationDestination(isPresented: $viewModel.showCourseTestView) {
+                        if let course = viewModel.selectedCourse {
                             CourseTestView(course: course)
                         }
                     }
-                                                        
+                    
                 }.padding([.top,.leading,.trailing],10)
             }
         }

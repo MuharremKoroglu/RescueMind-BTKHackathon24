@@ -6,25 +6,24 @@
 //
 
 import Foundation
-import GoogleGenerativeAI
 
 @MainActor
-class ScenariosViewViewModel : ObservableObject {
+class ScenariosViewViewModel : GenerativeAISharedViewModel {
     
-    @Published var selectedScenarioCategory : CourseCategoryTypes? = nil
+    @Published var selectedScenarioCategory : EducationalMaterialCategoryTypes? = nil
+    @Published var userAnswer : String = ""
     
-    var filteredScenarios : [CourseModel] {
+    var filteredScenarios : [EducationalMaterialModel] {
         if let selectedCategory = selectedScenarioCategory {
             return selectedCategory.categoryCourses
          } else {
-             return CourseCategoryTypes.allCases.flatMap({$0.categoryCourses})
+             return EducationalMaterialCategoryTypes.allCases.flatMap({$0.categoryCourses})
          }
     }
     
-    private let chat : Chat
-    
-    init(chat : Chat) {
-        self.chat = chat
+    var isButtonDisabled : Bool {
+        let aiResponseCount = messages.filter({$0.messageSender == .generativeAI}).count
+        return aiResponseCount == 0 || aiResponseCount == 5 || userAnswer.isEmpty
     }
     
 }

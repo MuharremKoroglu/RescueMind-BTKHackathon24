@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScenarioView: View {
+struct ScenariosView: View {
     
     @EnvironmentObject private var viewModel : ScenariosViewViewModel
         
@@ -25,8 +25,8 @@ struct ScenarioView: View {
                         Spacer()
                         Menu {
                             Picker("", selection: $viewModel.selectedScenarioCategory) {
-                                Text("All").tag(nil as CourseCategoryTypes?)
-                                ForEach(CourseCategoryTypes.allCases) { category in
+                                Text("All").tag(nil as EducationalMaterialCategoryTypes?)
+                                ForEach(EducationalMaterialCategoryTypes.allCases) { category in
                                     Text(category.categoryTitle)
                                         .tag(category)
                                 }
@@ -39,22 +39,25 @@ struct ScenarioView: View {
 
                     ScrollView(.vertical,showsIndicators: false) {
                         ForEach(viewModel.filteredScenarios) { scenario in
-                            CourseAndScenarioView(
-                                height: size.width * 0.65,
-                                imageName: scenario.courseImage,
-                                title: scenario.courseTitle,
-                                fontSize: size.width * 0.055,
-                                fontWidth: nil
-                            )
+                            NavigationLink {
+                                ScenarioCaseView(scenario: scenario)
+                            } label: {
+                                CourseAndScenarioView(
+                                    height: size.width * 0.6,
+                                    imageName: scenario.image,
+                                    title: scenario.title,
+                                    fontSize: size.width * 0.055
+                                )
+                            }
                         }
                     }
-
-                }.padding(10)
+                    
+                }.padding([.top,.leading,.trailing],10)
             }
         }
     }
 }
 
 #Preview {
-    ScenarioView()
+    ScenariosView()
 }

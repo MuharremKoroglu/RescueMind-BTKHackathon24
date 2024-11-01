@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct AnimatedGeminiStarLogo: View {
+struct RotatingImage: View {
     
+    let imageName : String
     let isImageRotating : Bool
     let imageWidth : CGFloat
     let imageHeight : CGFloat
 
     var body: some View {
-        Image("gemini_star_logo")
+        Image(imageName)
             .resizable()
             .frame(width: imageWidth, height: imageHeight)
             .rotationEffect(.degrees(isImageRotating ? 360 : 0))
