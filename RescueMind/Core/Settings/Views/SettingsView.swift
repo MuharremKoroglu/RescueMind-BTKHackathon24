@@ -20,10 +20,10 @@ struct SettingsView: View {
                     List {
                         Section {
                             HStack {
-                                Image(viewModel.user.userProfileImage)
-                                    .resizable()
-                                    .frame(width: size.width * 0.2, height: size.width * 0.2)
-                                    .clipShape(Circle())
+                                CircularProfilePicture(
+                                    width: size.width * 0.2,
+                                    height: size.width * 0.2
+                                )
                                 VStack(alignment: .leading,spacing: 5) {
                                     AccountInformationView(
                                         informationTitle: viewModel.user.userName,

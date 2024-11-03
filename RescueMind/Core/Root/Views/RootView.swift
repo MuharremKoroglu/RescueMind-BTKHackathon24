@@ -16,6 +16,7 @@ struct RootView: View {
     @StateObject private var settingsViewViewModel = SettingsViewViewModel()
     
     @State private var selectedTab : Int = 0
+    @State private var showOnboarding = true
         
     init() {
         
@@ -32,19 +33,23 @@ struct RootView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            TabView(selection: $selectedTab) {
-                HomeView()
-                    .environmentObject(homeViewViewModel)
-                    .tag(0)
-                ScenariosView()
-                    .environmentObject(scenariosViewViewModel)
-                    .tag(1)
-                SettingsView()
-                    .environmentObject(settingsViewViewModel)
-                    .tag(2)
+        if showOnboarding {
+            OnboardingView(showOnboarding: $showOnboarding)
+        }else {
+            VStack(spacing: 0) {
+                TabView(selection: $selectedTab) {
+                    HomeView()
+                        .environmentObject(homeViewViewModel)
+                        .tag(0)
+                    ScenariosView()
+                        .environmentObject(scenariosViewViewModel)
+                        .tag(1)
+                    SettingsView()
+                        .environmentObject(settingsViewViewModel)
+                        .tag(2)
+                }
+                CustomTabBarView(selectedTab: $selectedTab)
             }
-            CustomTabBarView(selectedTab: $selectedTab)
         }
     }
 }

@@ -36,14 +36,10 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        Image("profile_picture")
-                            .resizable()
-                            .frame(width: size.width * 0.12,height: size.width * 0.12)
-                            .padding(3)
-                            .background(
-                                Color.lighterAccent.opacity(0.2)
-                                    .clipShape(Circle())
-                            )
+                        CircularProfilePicture(
+                            width: size.width * 0.12,
+                            height: size.width * 0.12
+                        )
                         
                     }.frame(maxWidth: .infinity)
                     

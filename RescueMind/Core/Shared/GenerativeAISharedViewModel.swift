@@ -36,7 +36,6 @@ class GenerativeAISharedViewModel: ObservableObject {
             } catch {
                 isLoading = false
                 anErrorOccured = true
-                print("Soru oluşturulamadı : \(error)")
             }
         }
     }

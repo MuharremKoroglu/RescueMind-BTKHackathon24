@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0233C02CD792AD0085183E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0233BF2CD792AD0085183E /* OnboardingView.swift */; };
+		3B0233C22CD7A0A30085183E /* CircularProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0233C12CD7A0A30085183E /* CircularProfilePicture.swift */; };
 		3B16B49B2CD3CFEE00D0DBA9 /* RotatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16B49A2CD3CFEE00D0DBA9 /* RotatingImage.swift */; };
 		3B16B49D2CD410E700D0DBA9 /* CourseAndScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16B49C2CD410E700D0DBA9 /* CourseAndScenarioView.swift */; };
 		3B16B4A02CD4201400D0DBA9 /* ScenariosViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B16B49F2CD4201400D0DBA9 /* ScenariosViewViewModel.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B0233BF2CD792AD0085183E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		3B0233C12CD7A0A30085183E /* CircularProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfilePicture.swift; sourceTree = "<group>"; };
 		3B16B49A2CD3CFEE00D0DBA9 /* RotatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingImage.swift; sourceTree = "<group>"; };
 		3B16B49C2CD410E700D0DBA9 /* CourseAndScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAndScenarioView.swift; sourceTree = "<group>"; };
 		3B16B49F2CD4201400D0DBA9 /* ScenariosViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosViewViewModel.swift; sourceTree = "<group>"; };
@@ -97,6 +101,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B0233BD2CD792910085183E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				3B0233BE2CD7929F0085183E /* Views */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		3B0233BE2CD7929F0085183E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B0233BF2CD792AD0085183E /* OnboardingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3B16B49E2CD41FFE00D0DBA9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +128,7 @@
 		3B3E99E32CCBC9A2007C5A68 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3B0233C12CD7A0A30085183E /* CircularProfilePicture.swift */,
 				3BADBA922CD6DCDD00AA7C01 /* UserProgressMessageView.swift */,
 				3B3E99E42CCBCA04007C5A68 /* GradientLayer.swift */,
 				3B16B49C2CD410E700D0DBA9 /* CourseAndScenarioView.swift */,
@@ -183,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				3BE56EBA2CC7CD7800600A4B /* Root */,
+				3B0233BD2CD792910085183E /* Onboarding */,
 				3BE56EB92CC7CD7800600A4B /* Home */,
 				3BE56EBB2CC7CD7800600A4B /* Scenarios */,
 				3BE56ECE2CC7CDC700600A4B /* Settings */,
@@ -407,6 +429,8 @@
 				3BE56ECA2CC7CD7800600A4B /* RescueMindApp.swift in Sources */,
 				3B16B49B2CD3CFEE00D0DBA9 /* RotatingImage.swift in Sources */,
 				3B4A14362CD4D41D004704C0 /* GenerativeAISharedViewModel.swift in Sources */,
+				3B0233C22CD7A0A30085183E /* CircularProfilePicture.swift in Sources */,
+				3B0233C02CD792AD0085183E /* OnboardingView.swift in Sources */,
 				3BE1A7F02CD02E3F00124EEE /* CourseTestView.swift in Sources */,
 				3B457C622CC93E65007F651E /* EducationalMaterialCategoryTypes.swift in Sources */,
 				3BFDCAE92CCED78B007C6B9D /* HomeViewViewModel.swift in Sources */,
