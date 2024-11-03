@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct AccountModel {
+    
+    let userProfileImage : String
+    let userName : String
+    let userEmail : String
+    let userPhoneNumber : String
+    
+}

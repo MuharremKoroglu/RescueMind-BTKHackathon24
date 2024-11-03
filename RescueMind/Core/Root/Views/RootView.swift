@@ -10,12 +10,24 @@ import GoogleGenerativeAI
 
 struct RootView: View {
     
-    @StateObject private var homeViewViewModel = HomeViewViewModel()
-    @StateObject private var scenariosViewViewModel = ScenariosViewViewModel()
+    @StateObject private var sharedViewModel : GenerativeAISharedViewModel
+    @StateObject private var homeViewViewModel : HomeViewViewModel
+    @StateObject private var scenariosViewViewModel : ScenariosViewViewModel
+    @StateObject private var settingsViewViewModel = SettingsViewViewModel()
     
     @State private var selectedTab : Int = 0
         
     init() {
+        
+        let chat : Chat = GenerativeModel(
+            name: "gemini-1.5-flash",
+            apiKey: APIKey.default
+        ).startChat()
+        
+        _sharedViewModel = StateObject(wrappedValue: GenerativeAISharedViewModel(chat: chat))
+        _homeViewViewModel = StateObject(wrappedValue: HomeViewViewModel(chat: chat))
+        _scenariosViewViewModel = StateObject(wrappedValue: ScenariosViewViewModel(chat: chat))
+        
         UITabBar.appearance().isHidden = true
     }
     
@@ -29,6 +41,7 @@ struct RootView: View {
                     .environmentObject(scenariosViewViewModel)
                     .tag(1)
                 SettingsView()
+                    .environmentObject(settingsViewViewModel)
                     .tag(2)
             }
             CustomTabBarView(selectedTab: $selectedTab)

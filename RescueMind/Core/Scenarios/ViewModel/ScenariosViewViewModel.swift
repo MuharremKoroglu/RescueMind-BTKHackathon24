@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class ScenariosViewViewModel : GenerativeAISharedViewModel {
-    
+        
     @Published var selectedScenarioCategory : EducationalMaterialCategoryTypes? = nil
     @Published var userAnswer : String = ""
     

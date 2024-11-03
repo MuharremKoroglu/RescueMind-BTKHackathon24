@@ -10,7 +10,7 @@ import SwiftUI
 struct ScenariosView: View {
     
     @EnvironmentObject private var viewModel : ScenariosViewViewModel
-        
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -18,25 +18,6 @@ struct ScenariosView: View {
                 
                 VStack(spacing: 10) {
                     
-                    HStack {
-                        Text("Scenarios")
-                            .font(.avenir(size: size.width * 0.085))
-                            .fontWeight(.bold)
-                        Spacer()
-                        Menu {
-                            Picker("", selection: $viewModel.selectedScenarioCategory) {
-                                Text("All").tag(nil as EducationalMaterialCategoryTypes?)
-                                ForEach(EducationalMaterialCategoryTypes.allCases) { category in
-                                    Text(category.categoryTitle)
-                                        .tag(category)
-                                }
-                            }
-                        } label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                                .font(.title)
-                        }
-                    }
-
                     ScrollView(.vertical,showsIndicators: false) {
                         ForEach(viewModel.filteredScenarios) { scenario in
                             NavigationLink {
@@ -52,7 +33,24 @@ struct ScenariosView: View {
                         }
                     }
                     
-                }.padding([.top,.leading,.trailing],10)
+                }.padding([.leading,.trailing],10)
+                    .navigationTitle("Scenarios")
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Menu {
+                                Picker("", selection: $viewModel.selectedScenarioCategory) {
+                                    Text("All").tag(nil as EducationalMaterialCategoryTypes?)
+                                    ForEach(EducationalMaterialCategoryTypes.allCases) { category in
+                                        Text(category.categoryTitle)
+                                            .tag(category)
+                                    }
+                                }
+                            } label: {
+                                Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                    .font(.title2)
+                            }
+                        }
+                    }
             }
         }
     }

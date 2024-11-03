@@ -50,17 +50,25 @@ struct HomeView: View {
                     
                     VStack(alignment: .leading, spacing: 16) {
                         
-                        Text("Good to see you again, John! ")
-                            .font(.avenir(size: size.width * 0.04))
-                            .fontWeight(.semibold)
+                        UserProgressMessageView(
+                            message: "Good to see you again, John!",
+                            font: .avenir(size: size.width * 0.04),
+                            fontWeight: .semibold
+                        )
                         
-                        Text("You're making great progress!")
-                            .font(.avenir(size: size.width * 0.035))
-                            .foregroundColor(.secondary)
+                        UserProgressMessageView(
+                            message: "You're making great progress!",
+                            font: .avenir(size: size.width * 0.035),
+                            fontWeight: .medium,
+                            fontColor: .secondary
+                        )
                         
-                        Text("Completed: \(Int(viewModel.progress * 100))%")
-                            .font(.avenir(size: size.width * 0.035))
-                            .foregroundColor(.secondary)
+                        UserProgressMessageView(
+                            message: "Completed: \(Int(viewModel.progress * 100))%",
+                            font: .avenir(size: size.width * 0.035),
+                            fontWeight: .medium,
+                            fontColor: .secondary
+                        )
                         
                         ProgressView(value: viewModel.progress)
                             .progressViewStyle(LinearProgressViewStyle(tint: .accentColor))

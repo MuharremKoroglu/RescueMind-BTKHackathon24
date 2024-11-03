@@ -27,7 +27,7 @@ struct CourseTestView: View {
                 )
                 
                 HStack {
-                    ForEach(Constants.testResponseButtonTitles, id: \.self) { buttonTitle in
+                    ForEach(viewModel.testResponseButtonTitles, id: \.self) { buttonTitle in
                         Button {
                             viewModel.prompt = buttonTitle
                             viewModel.sendMessageToGenerativeAI()

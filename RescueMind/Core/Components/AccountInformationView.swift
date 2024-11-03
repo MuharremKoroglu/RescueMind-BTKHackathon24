@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct AccountInformationView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    let informationTitle : String
+    let font : Font
+    let fontWeight : Font.Weight?
+    
+    init(informationTitle: String, font: Font, fontWeight: Font.Weight? = nil) {
+        self.informationTitle = informationTitle
+        self.font = font
+        self.fontWeight = fontWeight
     }
-}
-
-#Preview {
-    AccountInformationView()
+    
+    var body: some View {
+        Text(informationTitle)
+            .font(font)
+            .fontWeight(fontWeight)
+    }
 }

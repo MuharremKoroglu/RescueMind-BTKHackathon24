@@ -9,9 +9,11 @@ import Foundation
 
 @MainActor
 class HomeViewViewModel : GenerativeAISharedViewModel {
-    
+        
     @Published var selectedCourseCategory : EducationalMaterialCategoryTypes = .accidents
     @Published var selectedCourse : EducationalMaterialModel? = nil
+    
+    @Published var testResponseButtonTitles : [String] = ["A","B","C","D"]
     
     @Published var showCourseDetailView : Bool = false
     @Published var showCourseTestView : Bool = false

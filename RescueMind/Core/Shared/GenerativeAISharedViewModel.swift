@@ -16,10 +16,11 @@ class GenerativeAISharedViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var anErrorOccured: Bool = false
 
-    private let chat : Chat = GenerativeModel(
-        name: "gemini-1.5-flash",
-        apiKey: APIKey.default
-    ).startChat()
+    private let chat : Chat
+    
+    init(chat : Chat) {
+        self.chat = chat
+    }
 
     func getMessageFromGenerativeAI() {
         isLoading = true

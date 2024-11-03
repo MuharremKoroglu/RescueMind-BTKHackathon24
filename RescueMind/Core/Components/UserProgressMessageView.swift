@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct UserProgressMessageView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    let message : String
+    let font : Font
+    let fontWeight : Font.Weight?
+    let fontColor : Color
+    
+    init(message: String, font: Font, fontWeight: Font.Weight? = nil,fontColor : Color = .primary) {
+        self.message = message
+        self.font = font
+        self.fontWeight = fontWeight
+        self.fontColor = fontColor
     }
-}
-
-#Preview {
-    UserProgressMessageView()
+    
+    var body: some View {
+        Text(message)
+            .font(font)
+            .fontWeight(fontWeight)
+            .foregroundStyle(fontColor)
+    }
 }

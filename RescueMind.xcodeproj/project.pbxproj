@@ -20,6 +20,12 @@
 		3B4A14382CD55AD7004704C0 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14372CD55AD7004704C0 /* BackButtonView.swift */; };
 		3B4A143A2CD55F23004704C0 /* AlertActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14392CD55F23004704C0 /* AlertActionButtonView.swift */; };
 		3BA3B4B02CD24E2F007307BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3B4AF2CD24E2F007307BD /* Constants.swift */; };
+		3BADBA892CD6068A00AA7C01 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BADBA882CD6068A00AA7C01 /* AccountModel.swift */; };
+		3BADBA8B2CD606D000AA7C01 /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BADBA8A2CD606D000AA7C01 /* SettingsViewViewModel.swift */; };
+		3BADBA8D2CD6107000AA7C01 /* SettingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BADBA8C2CD6107000AA7C01 /* SettingOption.swift */; };
+		3BADBA8F2CD614C800AA7C01 /* SettingsCategoryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BADBA8E2CD614C800AA7C01 /* SettingsCategoryTypes.swift */; };
+		3BADBA912CD6D5AF00AA7C01 /* AccountInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BADBA902CD6D5AF00AA7C01 /* AccountInformationView.swift */; };
+		3BADBA932CD6DCDD00AA7C01 /* UserProgressMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BADBA922CD6DCDD00AA7C01 /* UserProgressMessageView.swift */; };
 		3BC739E62CCAAA4F008A6290 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC739E52CCAAA4F008A6290 /* CourseDetailView.swift */; };
 		3BE1A7E62CCFCE4D00124EEE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3BE1A7E52CCFCE4D00124EEE /* Config.xcconfig */; };
 		3BE1A7EA2CCFD1D500124EEE /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3BE1A7E92CCFD1D500124EEE /* GoogleGenerativeAI */; };
@@ -53,6 +59,12 @@
 		3B4A14372CD55AD7004704C0 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		3B4A14392CD55F23004704C0 /* AlertActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionButtonView.swift; sourceTree = "<group>"; };
 		3BA3B4AF2CD24E2F007307BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3BADBA882CD6068A00AA7C01 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		3BADBA8A2CD606D000AA7C01 /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
+		3BADBA8C2CD6107000AA7C01 /* SettingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOption.swift; sourceTree = "<group>"; };
+		3BADBA8E2CD614C800AA7C01 /* SettingsCategoryTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCategoryTypes.swift; sourceTree = "<group>"; };
+		3BADBA902CD6D5AF00AA7C01 /* AccountInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationView.swift; sourceTree = "<group>"; };
+		3BADBA922CD6DCDD00AA7C01 /* UserProgressMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgressMessageView.swift; sourceTree = "<group>"; };
 		3BC739E52CCAAA4F008A6290 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		3BE1A7E52CCFCE4D00124EEE /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3BE1A7E72CCFCEA400124EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +108,7 @@
 		3B3E99E32CCBC9A2007C5A68 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3BADBA922CD6DCDD00AA7C01 /* UserProgressMessageView.swift */,
 				3B3E99E42CCBCA04007C5A68 /* GradientLayer.swift */,
 				3B16B49C2CD410E700D0DBA9 /* CourseAndScenarioView.swift */,
 				3BFDCAE52CCE852B007C6B9D /* CourseDetailSubTitles.swift */,
@@ -103,6 +116,7 @@
 				3B4292632CD1031300427371 /* MessageView.swift */,
 				3B16B49A2CD3CFEE00D0DBA9 /* RotatingImage.swift */,
 				3B4A14392CD55F23004704C0 /* AlertActionButtonView.swift */,
+				3BADBA902CD6D5AF00AA7C01 /* AccountInformationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -113,6 +127,14 @@
 				3B4A14352CD4D41D004704C0 /* GenerativeAISharedViewModel.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		3BADBA872CD6067600AA7C01 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3BADBA8A2CD606D000AA7C01 /* SettingsViewViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3BE56E952CC7C3E500600A4B = {
@@ -173,10 +195,13 @@
 		3BE56EBD2CC7CD7800600A4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3B457C5F2CC93C7B007F651E /* EducationalMaterialModel.swift */,
-				3BE1A7ED2CD026CD00124EEE /* MessageModel.swift */,
 				3BE56ED12CC7D52000600A4B /* CustomTabBarTabTypes.swift */,
+				3B457C5F2CC93C7B007F651E /* EducationalMaterialModel.swift */,
 				3B457C612CC93E65007F651E /* EducationalMaterialCategoryTypes.swift */,
+				3BE1A7ED2CD026CD00124EEE /* MessageModel.swift */,
+				3BADBA882CD6068A00AA7C01 /* AccountModel.swift */,
+				3BADBA8C2CD6107000AA7C01 /* SettingOption.swift */,
+				3BADBA8E2CD614C800AA7C01 /* SettingsCategoryTypes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				3BE56ED82CC7DD8A00600A4B /* Views */,
+				3BADBA872CD6067600AA7C01 /* ViewModel */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -365,10 +391,14 @@
 				3BE56ED22CC7D52000600A4B /* CustomTabBarTabTypes.swift in Sources */,
 				3BE56EC92CC7CD7800600A4B /* RootView.swift in Sources */,
 				3B16B49D2CD410E700D0DBA9 /* CourseAndScenarioView.swift in Sources */,
+				3BADBA912CD6D5AF00AA7C01 /* AccountInformationView.swift in Sources */,
+				3BADBA8D2CD6107000AA7C01 /* SettingOption.swift in Sources */,
 				3BE1A7EE2CD026CD00124EEE /* MessageModel.swift in Sources */,
+				3BADBA8F2CD614C800AA7C01 /* SettingsCategoryTypes.swift in Sources */,
 				3B4A14382CD55AD7004704C0 /* BackButtonView.swift in Sources */,
 				3B457C5E2CC9254D007F651E /* Extensions.swift in Sources */,
 				3B16B4A02CD4201400D0DBA9 /* ScenariosViewViewModel.swift in Sources */,
+				3BADBA932CD6DCDD00AA7C01 /* UserProgressMessageView.swift in Sources */,
 				3BE1A7EC2CD0233200124EEE /* APIKey.swift in Sources */,
 				3BE56EDC2CC7DDB000600A4B /* ScenariosView.swift in Sources */,
 				3B4A143A2CD55F23004704C0 /* AlertActionButtonView.swift in Sources */,
@@ -381,7 +411,9 @@
 				3B457C622CC93E65007F651E /* EducationalMaterialCategoryTypes.swift in Sources */,
 				3BFDCAE92CCED78B007C6B9D /* HomeViewViewModel.swift in Sources */,
 				3B4292642CD1031300427371 /* MessageView.swift in Sources */,
+				3BADBA8B2CD606D000AA7C01 /* SettingsViewViewModel.swift in Sources */,
 				3BE56EDA2CC7DD9700600A4B /* HomeView.swift in Sources */,
+				3BADBA892CD6068A00AA7C01 /* AccountModel.swift in Sources */,
 				3BC739E62CCAAA4F008A6290 /* CourseDetailView.swift in Sources */,
 				3BFDCAE62CCE852B007C6B9D /* CourseDetailSubTitles.swift in Sources */,
 				3BE56ED52CC7DB1D00600A4B /* CustomTabBarView.swift in Sources */,
