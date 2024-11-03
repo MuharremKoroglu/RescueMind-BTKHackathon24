@@ -134,7 +134,7 @@ struct CourseDetailView: View {
                                             Color.accent
                                                 .clipShape(Capsule())
                                         )
-                                }
+                                }.disabled(!viewModel.completedCourses.contains(course))
                                 
                             }
                             
